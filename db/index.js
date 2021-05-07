@@ -60,10 +60,50 @@ const getTotalReviewScore = function (id) {
   });
 };
 
+const postNewReview = function (id) {
+  return new Promise((resolve, reject) => {
+    Reviews.findOne({ courseNumber: id }, (err, results) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
+
+const updateReview = function (id) {
+  return new Promise((resolve, reject) => {
+    Reviews.findOne({ courseNumber: id }, (err, results) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(console.log(results));
+      }
+    });
+  });
+};
+
+
+const deleteReview = function (id) {
+  return new Promise((resolve, reject) => {
+    Reviews.findOne({ courseNumber: id }, (err, results) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(getUserReview(id));
+      }
+    });
+  });
+};
+
 module.exports = {
   db: db,
   getUserReview: getUserReview,
-  getTotalReviewScore: getTotalReviewScore
+  getTotalReviewScore: getTotalReviewScore,
+  postNewReview: postNewReview,
+  updateReview: updateReview,
+  deleteReview: deleteReview
 };
 
 

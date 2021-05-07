@@ -71,7 +71,7 @@ class ReviewsComponent extends React.Component {
       })
       .catch(error => console.log(error));
 
-    fetch(`http://localhost:3007/api/totalReviewScore/${Id}`)
+    fetch(`ç`)
       .then(response => response.json())
       .then(data => {
         if (this._isMounted) {

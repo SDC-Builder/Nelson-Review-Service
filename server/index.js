@@ -44,6 +44,53 @@ app.get('/api/totalReviewScore/:id', (req, res) => {
     });
 });
 
+// add
+app.put('/api/userReviews/:id', (req, res) => {
+  db.postNewReview(req.params.id)
+    .then((data) => {
+      if (!data) {
+        res.sendStatus(404);
+      } else {
+        res.send(data).status(200);
+      }
+    })
+    .catch(() => {
+      res.sendStatus(404);
+    });
+});
+
+// update
+app.put('/api/userReviews/:id', (req, res) => {
+  db.updateReview(req.params.id)
+    .then((data) => {
+      if (!data) {
+        res.sendStatus(404);
+      } else {
+        res.send(req.body).status(200);
+      }
+    })
+    .catch(() => {
+      res.sendStatus(404);
+    });
+});
+
+// delete
+app.delete('/api/userReviews/:id', (req, res) => {
+  db.deleteReview(req.params.id)
+    .then((data) => {
+      if (!data) {
+        res.sendStatus(404);
+      } else {
+        res.send(data).status(200);
+      }
+    })
+    .catch(() => {
+      res.sendStatus(404);
+    });
+});
+
+
+
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
