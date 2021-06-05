@@ -24,4 +24,5 @@ coverage
 build/
 dist/
 *.csv
+newrelic.js
 

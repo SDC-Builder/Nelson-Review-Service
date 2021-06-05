@@ -1,3 +1,4 @@
+const newrelic = require('newrelic')
 const db = require('../db/index.js');
 const express = require('express');
 const app = express();
@@ -5,7 +6,6 @@ const bodyParser = require('body-parser');
 const port = 3007;
 const cors = require('cors');
 const path = require('path');
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,8 +21,10 @@ app.get('/api/userReviews/:id', (req, res) => {
     .then((data) => {
       if (!data) {
         res.sendStatus(404);
+        console.log('failed')
       } else {
         res.send(data).status(200);
+        console.log('Success ')
       }
     })
     .catch(() => {
@@ -35,8 +37,10 @@ app.get('/api/totalReviewScore/:id', (req, res) => {
     .then((data) => {
       if (!data) {
         res.sendStatus(404);
+        console.log('failed')
       } else {
         res.send(data).status(200);
+        console.log('Success ')
       }
     })
     .catch(() => {

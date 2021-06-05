@@ -71,7 +71,7 @@ class ReviewsComponent extends React.Component {
       })
       .catch(error => console.log(error));
 
-    fetch(`ç`)
+    fetch(`http://localhost:3007/api/totalReviewScore/${Id}`)
       .then(response => response.json())
       .then(data => {
         if (this._isMounted) {
@@ -80,18 +80,6 @@ class ReviewsComponent extends React.Component {
 
       })
       .catch(error => console.log(error));
-
-    fetch(`http://3.140.219.139/api/getTitle/${Id}`)
-      .then(response => response.json())
-      .then(data => {
-        var courseTitle = `TOP REVIEWS FROM ${data.toUpperCase()}`;
-        if (this._isMounted) {
-          this.setState({
-            title: courseTitle
-          });
-        }
-      })
-      .catch(err => console.log('Issue with getting course Title', err));
 
   }
 
