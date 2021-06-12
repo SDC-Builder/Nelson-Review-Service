@@ -20,7 +20,6 @@ let reviewsSchema = new mongoose.Schema({
   ]
 });
 
-
 let totalReviewsSchema = new mongoose.Schema({
   courseNumber: Number,
   reviewCount: Number,

@@ -1,9 +1,10 @@
-const newrelic = require('newrelic')
-const db = require('../db/index.js');
+const newrelic = require('newrelic');
+//const db = require('../db/index.js'); // mongo
+const db = require('../db/Postgres/index.js') //postgres
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const port = 3007;
+const port = 3000;
 const cors = require('cors');
 const path = require('path');
 
@@ -39,7 +40,10 @@ app.get('/api/totalReviewScore/:id', (req, res) => {
         res.sendStatus(404);
         console.log('failed')
       } else {
-        res.send(data).status(200);
+        data.stars.courseNumber = data.courseid
+        data.stars.reviewCount = data.reviews.length
+        data.stars.totalStarScore = (Math.round((data.stars.sum / data.stars.reviewCount) * 100) / 100).toFixed(1)
+        res.send(data.stars).status(200); // postgres
         console.log('Success ')
       }
     })
@@ -48,7 +52,7 @@ app.get('/api/totalReviewScore/:id', (req, res) => {
     });
 });
 
-// add
+// POST
 app.put('/api/userReviews/:id', (req, res) => {
   db.postNewReview(req.params.id)
     .then((data) => {
