@@ -22,7 +22,7 @@ const getUserReview = function(id) {
         if (err) {
           console.log(err.stack)
         } else {
-          console.log(res.rows)
+          //console.log(res.rows)
           resolve(res.rows[0])
         }
       })
@@ -39,7 +39,7 @@ const getTotalReviewScore = function (id) {
         if (err) {
           console.log(err.stack)
         } else {
-          console.log(res.rows)
+          //console.log(res.rows)
           resolve(res.rows[0])
         }
       })
